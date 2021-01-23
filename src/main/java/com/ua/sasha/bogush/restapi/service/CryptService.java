@@ -1,14 +1,11 @@
 package com.ua.sasha.bogush.restapi.service;
 
-import com.ua.sasha.bogush.restapi.dao.CryptRepository;
-import org.springframework.stereotype.Service;
+import com.ua.sasha.bogush.restapi.model.CryptEntity;
 
-@Service
-public class CryptService {
-    private final CryptRepository cryptRepository;
+import java.math.BigInteger;
 
-    public CryptService(CryptRepository cryptRepository) {
-        this.cryptRepository = cryptRepository;
-    }
+public interface CryptService {
+    CryptEntity getEncript(BigInteger id);
 
+    CryptEntity getDecript(String fio);
 }

@@ -1,6 +1,5 @@
 package com.ua.sasha.bogush.restapi;
 
-import com.ua.sasha.bogush.restapi.service.SecretKeys;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

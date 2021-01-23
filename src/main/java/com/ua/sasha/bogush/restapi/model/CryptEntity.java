@@ -25,6 +25,14 @@ public class CryptEntity implements Serializable {
     @Column(name = "FIO")
     private String fio;
 
+    public CryptEntity(@NotNull BigDecimal id, @NotNull String fio) {
+        this.id = id;
+        this.fio = fio;
+    }
+
+    public CryptEntity() {
+    }
+
     public BigDecimal getId() {
         return id;
     }

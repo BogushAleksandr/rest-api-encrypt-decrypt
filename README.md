@@ -20,7 +20,7 @@ git clone https://github.com/BogushAleksandr/rest-api-encrypt-decrypt.git && cd 
 mvn clean package
 ### Запускаем проект 
 mvn spring-boot:run
-### Для работы в проекта, для примера используется БД MySQL
+### Для примера используется БД MySQL
 >Если нет тестовой БД, создаём и заполняем её.
 ```mysql
 CREATE DATABASE DB_CRYPT;

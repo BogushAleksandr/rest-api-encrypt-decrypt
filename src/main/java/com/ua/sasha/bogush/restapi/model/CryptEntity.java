@@ -1,12 +1,11 @@
 package com.ua.sasha.bogush.restapi.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  * @author Oleksandr Bogush
@@ -14,18 +13,28 @@ import java.math.BigDecimal;
  * @since 23.01.2021
  */
 @Entity
-@Table(name = "ENCRYPT_DECRYPT")
+@Table(name = "ENCRYPT", schema = "DB_CRYPT")
 public class CryptEntity implements Serializable {
+    @SerializedName("id")
+    @Expose
     @Id
     @NotNull
     @Column(name = "ID", nullable = false, unique = true)
-    private BigDecimal id;
+    private Integer id;
 
+    @SerializedName("fio")
+    @Expose
     @NotNull
     @Column(name = "FIO")
     private String fio;
 
-    public CryptEntity(@NotNull BigDecimal id, @NotNull String fio) {
+    private final static long serialVersionUID = 7282733192813605264L;
+
+    /**
+     * @param id
+     * @param fio
+     */
+    public CryptEntity(@NotNull Integer id, @NotNull String fio) {
         this.id = id;
         this.fio = fio;
     }
@@ -33,11 +42,11 @@ public class CryptEntity implements Serializable {
     public CryptEntity() {
     }
 
-    public BigDecimal getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(BigDecimal id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -48,4 +57,5 @@ public class CryptEntity implements Serializable {
     public void setFio(String fio) {
         this.fio = fio;
     }
+
 }

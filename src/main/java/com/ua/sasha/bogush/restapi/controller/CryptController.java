@@ -1,16 +1,16 @@
 package com.ua.sasha.bogush.restapi.controller;
 
+import com.ua.sasha.bogush.restapi.model.CryptBody;
 import com.ua.sasha.bogush.restapi.model.CryptEntity;
+import com.ua.sasha.bogush.restapi.model.DecryptBody;
 import com.ua.sasha.bogush.restapi.service.CryptServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import java.math.BigInteger;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -30,19 +30,27 @@ public class CryptController {
         this.cryptService = cryptService;
     }
 
-    @PostMapping(path = "/encrypt", produces = "application/json;charset=UTF-8")
+    @PostMapping(path = "/encrypt", produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
     @ResponseBody()
-    public String encryptFIObyID(@RequestBody BigInteger id)
+    public CryptBody encryptFIObyID(@RequestBody CryptEntity id)
             throws NoSuchAlgorithmException, IllegalBlockSizeException, InvalidKeyException,
             BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException {
-        LOG_CONTROLLER.info("id = " + id);
-        return cryptService.getEncript(id);
+        Integer in = id.getId();
+        LOG_CONTROLLER.info("id = " + in);
+        CryptBody cryptBody = cryptService.getEncript(in);
+        LOG_CONTROLLER.info("fio_encr = " + cryptBody.getFio_encr());
+        return cryptService.getEncript(in);
     }
 
-    @PostMapping(path = "/decrypt", produces = "application/json;charset=UTF-8")
-    @ResponseStatus(HttpStatus.CREATED)
-    public CryptEntity decryptFIO(String text) {
-        LOG_CONTROLLER.info("FIO = " + text);
-        return cryptService.getDecrypt(text);
+    @PostMapping(path = "/decrypt", produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
+    @ResponseBody()
+    public DecryptBody decryptFIO(@RequestBody CryptBody fio_encr)
+            throws NoSuchAlgorithmException, IllegalBlockSizeException, InvalidKeyException,
+            BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException {
+        String fio = fio_encr.getFio_encr();
+        LOG_CONTROLLER.info("FIO_ENCR = " + fio);
+        DecryptBody decryptBody = cryptService.getDecrypt(fio_encr.getFio_encr());
+        LOG_CONTROLLER.info("FIO_DECR = " + decryptBody.getFio());
+        return decryptBody;
     }
 }

@@ -4,8 +4,8 @@ import com.ua.sasha.bogush.restapi.model.CryptBody;
 import com.ua.sasha.bogush.restapi.model.CryptEntity;
 import com.ua.sasha.bogush.restapi.model.DecryptBody;
 import com.ua.sasha.bogush.restapi.service.CryptServiceImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
 
 import javax.crypto.BadPaddingException;
@@ -23,7 +23,7 @@ import java.security.NoSuchAlgorithmException;
 @RestController
 @RequestMapping("/api")
 public class CryptController {
-    private static final Logger LOG_CONTROLLER = LoggerFactory.getLogger(CryptController.class);
+    private static final Logger LOG_CONTROLLER = LogManager.getLogger(CryptController.class);
     private final CryptServiceImpl cryptService;
 
     public CryptController(CryptServiceImpl cryptService) {

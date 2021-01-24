@@ -2,3 +2,11 @@
 2021-01-24 17:20:04,128 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-1] fio_encr = jU2Wzhhc6ZLrIysOg3nnPQ==
 2021-01-24 17:20:16,757 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-2] FIO_ENCR = jU2Wzhhc6ZLrIysOg3nnPQ==
 2021-01-24 17:20:16,758 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-2] FIO_DECR = Test Testov
+2021-01-24 17:41:21,497 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-2] id = 0
+2021-01-24 17:41:21,648 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-2] fio_encr = xQL3um9ybc+ukzF2EYS+3A==
+2021-01-24 17:41:34,480 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-3] FIO_ENCR = xQL3um9ybc+ukzF2EYS+3A==
+2021-01-24 17:41:34,483 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-3] FIO_DECR = Tds Testovy
+2021-01-24 17:42:35,825 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-1] id = 0
+2021-01-24 17:42:35,972 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-1] fio_encr = ml7xUUYP3alAafqrna1DSg==
+2021-01-24 17:42:46,430 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-3] FIO_ENCR = ml7xUUYP3alAafqrna1DSg==
+2021-01-24 17:42:46,434 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-3] FIO_DECR = Tds Testovy

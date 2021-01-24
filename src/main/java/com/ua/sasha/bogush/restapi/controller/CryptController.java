@@ -48,9 +48,9 @@ public class CryptController {
             throws NoSuchAlgorithmException, IllegalBlockSizeException, InvalidKeyException,
             BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException {
         String fio = fio_encr.getFio_encr();
-        LOG_CONTROLLER.info("FIO_ENCR = " + fio);
+        LOG_CONTROLLER.info("fio_encr = " + fio);
         DecryptBody decryptBody = cryptService.getDecrypt(fio_encr.getFio_encr());
-        LOG_CONTROLLER.info("FIO_DECR = " + decryptBody.getFio());
+        LOG_CONTROLLER.info("fio = " + decryptBody.getFio());
         return decryptBody;
     }
 }

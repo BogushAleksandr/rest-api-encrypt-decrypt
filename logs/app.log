@@ -10,3 +10,11 @@
 2021-01-24 17:42:35,972 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-1] fio_encr = ml7xUUYP3alAafqrna1DSg==
 2021-01-24 17:42:46,430 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-3] FIO_ENCR = ml7xUUYP3alAafqrna1DSg==
 2021-01-24 17:42:46,434 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-3] FIO_DECR = Tds Testovy
+2021-01-24 18:16:18,965 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-2] id = 2
+2021-01-24 18:16:19,130 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-2] fio_encr = fZBDB07nqYxNfUJ08f/3cA==
+2021-01-24 18:16:29,836 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-3] FIO_ENCR = fZBDB07nqYxNfUJ08f/3cA==
+2021-01-24 18:16:29,843 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-3] FIO_DECR = Tom Cat
+2021-01-24 18:17:47,061 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-3] id = 1
+2021-01-24 18:17:47,214 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-3] fio_encr = qO/bv33IDN0A+4XLciVggg==
+2021-01-24 18:17:55,511 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-2] fio_encr = qO/bv33IDN0A+4XLciVggg==
+2021-01-24 18:17:55,514 INFO c.u.s.b.r.c.CryptController [http-nio-8090-exec-2] fio = Test Testov

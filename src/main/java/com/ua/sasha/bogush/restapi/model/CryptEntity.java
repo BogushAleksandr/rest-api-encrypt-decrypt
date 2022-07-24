@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -28,6 +29,7 @@ public class CryptEntity implements Serializable {
     @Column(name = "FIO")
     private String fio;
 
+    @Serial
     private final static long serialVersionUID = 7282733192813605264L;
 
     /**

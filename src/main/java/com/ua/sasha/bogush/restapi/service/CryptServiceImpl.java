@@ -2,17 +2,18 @@ package com.ua.sasha.bogush.restapi.service;
 
 import com.ua.sasha.bogush.restapi.dao.CryptRepository;
 import com.ua.sasha.bogush.restapi.model.CryptBody;
-import com.ua.sasha.bogush.restapi.model.CryptEntity;
 import com.ua.sasha.bogush.restapi.model.DecryptBody;
 import com.ua.sasha.bogush.restapi.util.AESUtil;
 import org.springframework.stereotype.Service;
 
-import javax.crypto.*;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Optional;
 
 /**
  * @author Oleksandr Bogush
@@ -23,12 +24,13 @@ import java.util.Optional;
 public class CryptServiceImpl implements CryptService {
     private final CryptRepository cryptRepository;
     private final AESUtil aesUtil;
+    private static final IvParameterSpec IV_PARAMETER_SPEC = AESUtil.generateIv();
+    private static final String ALGORITHM = "AES/CBC/PKCS5Padding";
 
     /**
      * @param cryptRepository
      * @param aesUtil
      * @author Oleksandr Bogush
-     * @version 1.0
      * @since 24.01.2021
      */
     public CryptServiceImpl(CryptRepository cryptRepository, AESUtil aesUtil) {
@@ -40,31 +42,27 @@ public class CryptServiceImpl implements CryptService {
 
     static {
         try {
-            key = new AESUtil().generateKey(256);
+            key = AESUtil.generateKey(256);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
     }
 
-    private static final IvParameterSpec ivParameterSpec = new AESUtil().generateIv();
-    private static final String algorithm = "AES/CBC/PKCS5Padding";
-
     /**
      * @param id
      * @return CryptBody
      * @author Oleksandr Bogush
-     * @version 1.0
      * @since 24.01.2021
      */
-    public CryptBody getEncript(Integer id)
+    public CryptBody getEncrypt(Integer id)
             throws NoSuchAlgorithmException, IllegalBlockSizeException, InvalidKeyException,
-            BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException {
-        Optional<CryptEntity> cryptEntity = cryptRepository.findById(id);
+            BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalArgumentException {
+        var cryptEntity = cryptRepository.findById(id);
 
-        String fio_encrypt = aesUtil.encrypt(algorithm, cryptEntity.get().getFio(), key, ivParameterSpec);
+        var fioEncrypt = aesUtil.encrypt(ALGORITHM, cryptEntity.orElseThrow().getFio(), key, IV_PARAMETER_SPEC);
 
-        CryptBody cryptBody = new CryptBody();
-        cryptBody.setFio_encr(fio_encrypt);
+        var cryptBody = new CryptBody();
+        cryptBody.setFio_encr(fioEncrypt);
         return cryptBody;
     }
 
@@ -72,17 +70,16 @@ public class CryptServiceImpl implements CryptService {
      * @param encryptText
      * @return CryptBody
      * @author Oleksandr Bogush
-     * @version 1.0
      * @since 24.01.2021
      */
     public DecryptBody getDecrypt(String encryptText)
             throws NoSuchAlgorithmException, IllegalBlockSizeException, InvalidKeyException,
             BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException {
 
-        String fio_decrypt = aesUtil.decrypt(algorithm, encryptText, key, ivParameterSpec);
+        var fioDecrypt = aesUtil.decrypt(ALGORITHM, encryptText, key, IV_PARAMETER_SPEC);
 
-        DecryptBody decryptBody = new DecryptBody();
-        decryptBody.setFio(fio_decrypt);
+        var decryptBody = new DecryptBody();
+        decryptBody.setFio(fioDecrypt);
         return decryptBody;
     }
 }

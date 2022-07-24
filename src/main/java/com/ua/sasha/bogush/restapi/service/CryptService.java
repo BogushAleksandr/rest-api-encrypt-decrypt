@@ -20,10 +20,9 @@ public interface CryptService {
      * @param id
      * @return CryptBody
      * @author Oleksandr Bogush
-     * @version 1.0
      * @since 24.01.2021
      */
-    CryptBody getEncript(Integer id)
+    CryptBody getEncrypt(Integer id)
             throws NoSuchAlgorithmException, IllegalBlockSizeException, InvalidKeyException,
             BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException;
 
@@ -31,7 +30,6 @@ public interface CryptService {
      * @param encryptText
      * @return CryptBody
      * @author Oleksandr Bogush
-     * @version 1.0
      * @since 24.01.2021
      */
     DecryptBody getDecrypt(String encryptText)
